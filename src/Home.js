@@ -242,7 +242,7 @@ import right from './img/right-direction.svg';
             
               <div className="field">
               <p>would you like to know more about us, why not send us a mail </p>
-              <form className="w-50" action="mailto:thetijanidiscple@gmail.com" method="post" encType="text/plain">
+              <form className="w-50" action="https://mailto:thetijanidiscple@gmail.com" method="post" encType="text/plain">
                 <button type = "submit" className= "button is-black is-medium">contact us</button>
               </form>
                 
