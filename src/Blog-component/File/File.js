@@ -15,7 +15,7 @@ import FileSaver from 'file-saver';
      }
 
      getFiles () {
-        axios.get(`http://159.65.237.77/file/files?page=${this.state.pageNumber}`)
+        axios.get(`http://api.thetijanidisciples.com/file/files?page=${this.state.pageNumber}`)
         .then(res => res.data)
         .then(({totalPages, files}) => {
             this.setState({files : files});
@@ -47,7 +47,7 @@ import FileSaver from 'file-saver';
         
                 axios({
                     method: "GET",
-                    url: `http://159.65.237.77/file/download/${downloadFilename}`,
+                    url: `http://api.thetijanidisciples.com/file/download/${downloadFilename}`,
                     responseType: "blob",
                     
                 }).then(response => {

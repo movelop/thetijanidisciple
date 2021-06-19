@@ -14,7 +14,7 @@ import {Link} from 'react-router-dom';
 
     async getVideo () {
         const res = await axios.get(`
-        http://159.65.237.77/video/videos/${this.state.videoFilename}`);
+        http://api.thetijanidisciples.com/video/videos/${this.state.videoFilename}`);
         this.setState({video: res.data});
         
     } 
@@ -39,7 +39,7 @@ import {Link} from 'react-router-dom';
                             <div className = "post">
                                 <div className= "content">
                                     <video controls>
-                                        <source src= {`http://159.65.237.77/video/show/${this.state.videoFilename}`}
+                                        <source src= {`http://api.thetijanidisciples.com/video/show/${this.state.videoFilename}`}
                                         type = {this.state.video.contentType} >
                                         </source>
                                     

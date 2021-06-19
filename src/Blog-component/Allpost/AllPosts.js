@@ -9,7 +9,7 @@ import PostList from '../PostList/PostList';
 
 
     useEffect(()=>{
-        axios.get(`http://159.65.237.77/posts?page=${pageNumber}`
+        axios.get(`http://api.thetijanidisciples.com/posts?page=${pageNumber}`
         )
         .then(res =>res.data)
         .then(({totalPages, posts}) => {
