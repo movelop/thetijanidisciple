@@ -13,6 +13,9 @@ import banner from './img/favicon.png';
        }))
        
      }
+     closeNav = () => {
+       this.setState({isActive: false});
+     }
     render() {
         return (
             <nav className="navbar"
@@ -39,18 +42,18 @@ import banner from './img/favicon.png';
               
             </div>
             <div className="navbar-end">
-              <Link className="navbar-item" to="/posts">
+              <Link onClick={this.closeNav} className="navbar-item" to="/posts">
                 
                   Articles
                 
               </Link>
-              <Link className="navbar-item" to="/file">
+              <Link onClick={this.closeNav} className="navbar-item" to="/file">
                   Documents
               </Link>
-              <Link className="navbar-item" to="/videos">
+              <Link onClick={this.closeNav} className="navbar-item" to="/videos">
                   Videos
               </Link>
-              <Link className="navbar-item" to="/quiz">
+              <Link onClick={this.closeNav} className="navbar-item" to="/quiz">
                 Quiz
                 
               </Link>
