@@ -8,7 +8,7 @@ import VideoList from '../VideoList/VideoList';
         const [numberOfPages, setNumberOfPage] = useState(0);
 
         useEffect(() => {
-            axios.get(`http://api.thetijanidisciples.com/video/videos?page=${pageNumber}`)
+            axios.get(`https://api.thetijanidisciples.com/video/videos?page=${pageNumber}`)
         .then(res =>res.data)
         .then(({totalPages, files}) => {
             setVideos(files);

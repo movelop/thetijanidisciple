@@ -25,7 +25,8 @@ import './App.css'
 const App = () => {
 	return (
 		<BrowserRouter>
-			<NavBar/>
+			<NavBar />
+			<div className="navi"></div>
 			<Switch>
 				<Route exact path ="/" component ={Home} />
 				<Route path = '/posts/:id' component = {Post} />

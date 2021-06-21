@@ -14,7 +14,7 @@ import {Link} from 'react-router-dom';
 
     async getPost () {
         const res = await axios.get(`
-        http://api.thetijanidisciples.com/posts/${this.props.match.params.id}`);
+        https://api.thetijanidisciples.com/posts/${this.props.match.params.id}`);
         this.setState({post: res.data});
         
     }
