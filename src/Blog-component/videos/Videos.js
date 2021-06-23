@@ -57,10 +57,19 @@ import VideoList from '../VideoList/VideoList';
                     </div>
                 </div>
                 <div>
-                    <nav className="has-text-right">
-                        <button onClick={prevHandler} className="pagination-next" >Previous </button>
-                        <button onClick= {nextHandler} className="pagination-previous">Next </button>
-                    </nav>  
+                {pageNumber === 0 && numberOfPages > 1 && <nav className= "has-text-right">
+                    <button onClick= {nextHandler} className="pagination-next">Next Posts</button>
+                    </nav>
+                }
+                {pageNumber >= 1 && pageNumber < numberOfPages-1 && <nav className="has-text-right">
+	                <button onClick={prevHandler} className="pagination-previous" >Previous Posts</button>
+	                <button onClick= {nextHandler} className="pagination-next">Next Posts</button>
+	            </nav>
+                }
+                {pageNumber === numberOfPages-1 && numberOfPages > 1 && <nav className= "has-text-right">
+                <button onClick={prevHandler} className="pagination-previous" >Previous Posts</button>
+                </nav>
+                } 
                 </div>
             </div>
         )

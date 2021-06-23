@@ -103,7 +103,7 @@ import right from './img/right-direction.svg';
         <div className="has-text-centered" id="services-text-container">
           <h1 className="title is-1">Our Mission</h1>
           <h4 className="subtitle">
-            There are many variations of passages of Lorem Ipsum available, but the majority have
+            As a community we have our missions, these are what we are out to achieve with every progress we make as a unit.
           </h4>
         </div>
         <br />
@@ -162,7 +162,7 @@ import right from './img/right-direction.svg';
         <div className="has-text-centered" id="services-text-container">
           <h1 className="title is-1">check out</h1>
           <h4 className="subtitle">
-            There are many variations of passages of Lorem Ipsum available, but the majority have
+            Here are some of the features of our platform:
           </h4>
         </div>
         <br />
