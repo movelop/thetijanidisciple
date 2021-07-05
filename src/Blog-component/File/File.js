@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-import FileSaver from 'file-saver';
+
 
 
 
@@ -8,7 +8,7 @@ function File () {
     const [pageNumber, setPageNumber] = useState(0);
      const [files, setFiles] = useState([]);
      const [numberOfPages, setNumberOfPage] = useState(0);
-     const [filedownloading, setFiledownloading] = useState(false)
+     
 
      useEffect(()=>{
         axios.get(`https://api.thetijanidisciples.com/file/files?page=${pageNumber}`
@@ -37,32 +37,16 @@ function File () {
     };
     const renderList = () => {
         return files.map(file =>{
-            const onSubmitDownload =(e) =>{
-                e.preventDefault();
+            
                 let downloadFilename = file.filename;
         
-                axios({
-                    method: "GET",
-                    url: `https://api.thetijanidisciples.com/file/download/${downloadFilename}`,
-                    responseType: "blob",
-                    
-                }).then((response) => {
-                    setFiledownloading( true) ;
-                    FileSaver.saveAs(response.data, downloadFilename);
-                })
-                .then(() => {
-                    setFiledownloading(false);
-
-                });	
-            }
+                
             return (
                 <div className= "content" key={file.filename}>
                             <div className= "content-header" >
                             <h3 className= "title is-4"><b>{file.filename}</b></h3>
                             <h6 className = "subtitle is-6">{renderDate(file.uploadDate)}</h6>
-                            <button className="button is-dark is-medium" onClick={((e) => onSubmitDownload(e))}>
-							    Download
-						    </button>
+                            <a href={`https://api.thetijanidisciples.com/file/download/${downloadFilename}`} download={file.filename} className="button is-dark is-medium" >Download</a>
                             <hr/>
                             </div>
                              
