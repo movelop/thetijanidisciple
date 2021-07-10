@@ -1,30 +1,40 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-
+import {useHistory} from 'react-router-dom'
 
 
 
 function File () {
+    const history = useHistory();
+    const path = window.location.pathname;
     const [pageNumber, setPageNumber] = useState(0);
      const [files, setFiles] = useState([]);
      const [numberOfPages, setNumberOfPage] = useState(0);
      
 
      useEffect(()=>{
-        axios.get(`https://api.thetijanidisciples.com/file/files?page=${pageNumber}`
+         const getPost = () =>{
+            axios.get(`https://api.thetijanidisciples.com/file/files?page=${pageNumber}`
         )
         .then(res =>res.data)
         .then(({totalPages, files}) => {
             setFiles(files);
             setNumberOfPage(totalPages);
         })
-    }, [pageNumber])
+         };
+         getPost();
+        history.push(`${path}?page=${pageNumber + 1}`)
+    }, [pageNumber, history, path])
 
-    const prevHandler = () => {
+    const prevHandler = (e) => {
+        e.preventDefault();
         setPageNumber(Math.max(0, pageNumber-1))
+        window.scrollTo(0,0);
       }
-    const nextHandler = () => {
+    const nextHandler = (e) => {
+        e.preventDefault();
         setPageNumber(Math.min(numberOfPages-1, pageNumber + 1));
+        window.scrollTo(0,0);
       }
     const renderDate = (dateString) =>{
         const nameMonths = ['January',"February", "March","April",

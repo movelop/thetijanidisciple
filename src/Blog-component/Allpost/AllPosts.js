@@ -1,27 +1,37 @@
 import axios from 'axios';
 import React, { useState, useEffect} from 'react';
 import PostList from '../PostList/PostList';
-
+import { useHistory} from 'react-router-dom';
  function AllPosts () {
+     const history = useHistory();
+     const path = window.location.pathname;
      const [pageNumber, setPageNumber] = useState(0);
      const [posts, setPosts] = useState([]);
      const [numberOfPages, setNumberOfPage] = useState(0)
 
 
     useEffect(()=>{
-        axios.get(`https://api.thetijanidisciples.com/posts?page=${pageNumber}`
+        const getPages = ()=>{
+            axios.get(`https://api.thetijanidisciples.com/posts?page=${pageNumber}`
         )
         .then(res =>res.data)
         .then(({totalPages, posts}) => {
             setPosts(posts);
             setNumberOfPage(totalPages);
         })
-    }, [pageNumber])
-    const prevHandler = () => {
+        }
+        getPages();
+        history.push(`${path}?page=${pageNumber + 1}`);
+    }, [pageNumber, history, path])
+    const prevHandler = (e) => {
+        e.preventDefault();
         setPageNumber(Math.max(0, pageNumber-1))
+        window.scrollTo(0,0);
       }
-    const nextHandler = () => {
+    const nextHandler = (e) => {
+        e.preventDefault();
         setPageNumber(Math.min(numberOfPages-1, pageNumber + 1));
+        window.scrollTo(0,0);
       }
     const renderList = () => {
         return posts.map(post =>{

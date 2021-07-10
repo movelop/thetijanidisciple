@@ -1,31 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import VideoList from '../VideoList/VideoList';
+import { useHistory} from 'react-router-dom';
 
     function Videos ()  {
+        const history = useHistory();
+        const path = window.location.pathname;
         const [pageNumber, setPageNumber] = useState(0);
         const [videos, setVideos] = useState([]);
         const [numberOfPages, setNumberOfPage] = useState(0);
 
         useEffect(() => {
-            axios.get(`https://api.thetijanidisciples.com/video/videos?page=${pageNumber}`)
-        .then(res =>res.data)
-        .then(({totalPages, files}) => {
-            setVideos(files);
-            setNumberOfPage(totalPages);
-        })
-        },[pageNumber])
-
-    
-
-    
-
-    const prevHandler = () => {
-        setPageNumber(Math.max(0, pageNumber-1))
-      }
-    const nextHandler = () => {
-        setPageNumber(Math.min(numberOfPages-1, pageNumber + 1));
-      }
+            const getPages = () => {
+                axios.get(`https://api.thetijanidisciples.com/video/videos?page=${pageNumber}`)
+                    .then(res =>res.data)
+                    .then(({totalPages, files}) => {
+                        setVideos(files);
+                        setNumberOfPage(totalPages);
+                    })
+            };
+            getPages();
+            history.push(`${path}?page=${pageNumber + 1}`)
+            
+        },[pageNumber, history, path])
+        const prevHandler = (e) => {
+            e.preventDefault();
+            setPageNumber(Math.max(0, pageNumber-1))
+            window.scrollTo(0,0);
+          }
+        const nextHandler = (e) => {
+            e.preventDefault();
+            setPageNumber(Math.min(numberOfPages-1, pageNumber + 1));
+            window.scrollTo(0,0);
+          }
       const renderList = () => {
         return videos.map(video =>{
             return (
