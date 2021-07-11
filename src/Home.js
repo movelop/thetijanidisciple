@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
 import banner from './img/praying.svg';
 import blog from './img/blog.png';
 import fileImage from './img/file.png';
@@ -10,7 +9,6 @@ import right from './img/right-direction.svg';
 
 
  class Home extends Component {
-  
     render() {
         return (
             <div>
@@ -179,11 +177,11 @@ import right from './img/right-direction.svg';
                   the goal is to know more about our religion and make ourselves better muslims
                 </p>
                 <div  className ="has-text-centered">
-                    <Link to = "/posts">
+                    <a href = "/posts" >
                     <span className="subtitle">check out</span> <span>
                     <img src = {right} alt= "" width="10px" height = "10px"/>
                     </span>
-                    </Link>
+                    </a>
                 </div>
               </div>
             </div>
@@ -200,11 +198,11 @@ import right from './img/right-direction.svg';
                   documents and guide of our community.
                 </p>
                 <div  className ="has-text-centered">
-                    <Link to = "/file" >
+                    <a href = "/file"  >
                     <span className="subtitle">check out</span> <span>
                     <img src = {right} alt= "" width="10px" height = "10px"/>
                     </span>
-                    </Link>
+                    </a>
                 </div>
               </div>
             </div>
@@ -221,11 +219,11 @@ import right from './img/right-direction.svg';
                   about our great umah
                 </p>
                 <div  className ="has-text-centered">
-                    <Link to = "/quiz" >
+                    <a href = "/quiz" >
                     <span className="subtitle">check out</span> <span>
                     <img src = {right} alt= "" width="10px" height = "10px"/>
                     </span>
-                    </Link>
+                    </a>
                 </div>
               </div>
             </div>
