@@ -89,16 +89,16 @@ function File () {
             </div>
             <div>
                 {pageNumber === 0 && numberOfPages > 1 && <nav className= "has-text-right">
-                    <button onClick= {nextHandler} className="pagination-next">Next Posts</button>
+                    <button onClick= {nextHandler} className="pagination-next">Next Page</button>
                     </nav>
                 }
                 {pageNumber >= 1 && pageNumber < numberOfPages-1 && <nav className="has-text-right">
-	                <button onClick={prevHandler} className="pagination-previous" >Previous Posts</button>
-	                <button onClick= {nextHandler} className="pagination-next">Next Posts</button>
+	                <button onClick={prevHandler} className="pagination-previous" >Previous Page</button>
+	                <button onClick= {nextHandler} className="pagination-next">Next Page</button>
 	            </nav>
                 }
                 {pageNumber === numberOfPages-1 && numberOfPages > 1 && <nav className= "has-text-right">
-                <button onClick={prevHandler} className="pagination-previous" >Previous Posts</button>
+                <button onClick={prevHandler} className="pagination-previous" >Previous Page</button>
                 </nav>
                 }
             </div> 
