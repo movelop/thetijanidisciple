@@ -34,7 +34,7 @@ import './QuestionBox.css';
         if(currentQuestion < numberOfQuestions -1){
             onSetCurrentQuestion(currentQuestion + 1);
         } else {
-            onSetStep(4);
+            onSetStep(3);
         }
     }
     return (
@@ -46,7 +46,7 @@ import './QuestionBox.css';
                   <h2 className = "mb-5">{data.question}</h2>
                   <div className ="control" ref ={radioWrapper}>
                       {data.options.map((choice, i) => (
-                        <label className ="radio has-background-light">
+                        <label className ="radio has-background-light" key ={choice}>
                             <input type ="radio" name ="answer" value={choice} onChange = {changeHandler} />
                             {choice}
                         </label>

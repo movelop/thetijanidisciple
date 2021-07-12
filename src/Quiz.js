@@ -3,7 +3,6 @@ import './Quiz.css';
 import Start from './Quiz-components/Start/Start';
 import QuestionBox from './Quiz-components/QuestionBox/QuestionBox';
 import End from './Quiz-components/End/End';
-import LandingPage from './Quiz-components/LandingPage/LandingPage';
 import Modal from './Quiz-components/Modal';
 
 import QuizData from './Quiz-components/Data/QuizData';
@@ -19,18 +18,16 @@ function Quiz() {
   const [time, setTime] = useState(0);
 
   useEffect(() => {
-   if( step === 4){
+   if( step === 2){
      clearInterval(interval)
    }
   }, [step])
 
-  const getStarted = () => {
-    setStep(2);
-  }
+ 
 
 
   const quizStarterHandler = () =>{
-    setStep(3);
+    setStep(2);
     interval = setInterval(() => {
       setTime(prevTime => prevTime + 1);
     }, 1000)
@@ -39,7 +36,7 @@ function Quiz() {
   const resetQuizHandler = () => {
     setCurrentQuestion(0);
     setAnswers([]);
-    setStep(2);
+    setStep(1);
     setTime(0);
     interval = setInterval(() => {
       setTime(prevTime => prevTime + 1);
@@ -50,20 +47,18 @@ function Quiz() {
     <>
     
     <div className="App">
-    <div>
-      { step === 1 && <LandingPage onGetStarted = {getStarted} />}
-    </div>   
-     { step === 2 && <Start onQuizStart ={quizStarterHandler}
+      
+     { step === 1 && <Start onQuizStart ={quizStarterHandler}
      numberOfQuestions = {QuizData.length}
       />}
-     { step === 3 && <QuestionBox
+     { step === 2 && <QuestionBox
      data = {QuizData[currentQuestion]}
      onAnswerUpdate = {setAnswers}
      numberOfQuestions = {QuizData.length}
      currentQuestion = {currentQuestion}
      onSetCurrentQuestion = {setCurrentQuestion}
      onSetStep = {setStep} />}
-     { step === 4 && <End 
+     { step === 3 && <End 
      results ={answers}
      data = {QuizData}
      onReset = {resetQuizHandler}
